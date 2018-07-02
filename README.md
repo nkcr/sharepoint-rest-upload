@@ -7,7 +7,7 @@ authentication using a certificate.
 $ virtualenv env # Creates a virtualenv in the env folder
 $ source env/bin/activate # Load the virtualenv
 $ pip3 install -r requirements.txt # Install dependencies
-$ python3 rest-upload.py # Run the script
+$ python3 rest-upload.py <file path> # Run the script
 ```
 
 ### Generate the certificate
