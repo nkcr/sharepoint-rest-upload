@@ -9,5 +9,9 @@
 
 PICAM_DIR=/home/pi/picam
 
+# Start picam
+$PICAM_DIR/make_dirs.sh
+nohup $PICAM_DIR/picam --alsadev hw:1,0 &>$PICAM_DIR/logs.txt &
+
 # Start recording:
-touch 
+touch $PICAM_DIR/hooks/start_record

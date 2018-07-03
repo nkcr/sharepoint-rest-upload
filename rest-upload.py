@@ -133,7 +133,8 @@ with requests.Session() as s:
         #print(json.dumps(r.json(), indent=2))
         raise Exception("ERROR:", r.status_code, r.text)
       else:
-        print("Uploaded {}/{} bytes ({}%)".format(offset, file_size, int(offset/file_size*100)))
+        print("Uploaded {}/{} bytes ({}%)".format(offset, file_size, 
+                                                  int(offset/file_size*100)))
   except requests.exceptions.RequestException as e:
     r = s.post(request_cancel_upload.format(uuid))
     print(e)
