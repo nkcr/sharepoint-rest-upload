@@ -42,4 +42,4 @@ $ python3 rest-upload <file path>
 
 ### Limitations
 
-This script uses batch upload and has the only limitation of 30 mimutes per upload.
+This script uses batch upload and has the only limitation of 30 minutes per upload.
