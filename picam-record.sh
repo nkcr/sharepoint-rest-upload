@@ -27,7 +27,7 @@ echo -n > logs.txt
 echo "make dirs..."
 ./make_dirs.sh
 echo "start picam..."
-./picam --alsadev hw:1,1 &>$PICAM_DIR/logs.txt & # Forked process
+./picam --alsadev hw:1,0 &>$PICAM_DIR/logs.txt & # Forked process
 PICAM_PID=$!
 
 # Wait a bit for picam to be ready

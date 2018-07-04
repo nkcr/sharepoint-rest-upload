@@ -15,6 +15,7 @@ without virtualenv
 ```bash
 $ sudo apt-get install python3-pip
 $ pip3 install adal
+$ scp -r certificate pi@192.168.1.145:sharepoint-rest-upload
 ```
 
 ### Generate the certificate

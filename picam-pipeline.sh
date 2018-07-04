@@ -28,9 +28,9 @@ fi
 
 # Convert the record
 echo "convert the record..."
-today=`date +%Y-%m-%d-%Hh`
+today=`date +%Y-%m-%d-%H:%M:%S`
 destination="$PICAM_DIR/archive/Louange-du-$today.mp4"
-ffmpeg -i $PICAM_DIR/archive/$LAST_RECORD -c:v copy -c:a copy -bsf:a aac_adtstoasc $destination
+ffmpeg -i -y $PICAM_DIR/archive/$LAST_RECORD -c:v copy -c:a copy -bsf:a aac_adtstoasc $destination
 echo "...done!"
 
 echo "check presence of converted file..."
@@ -41,3 +41,9 @@ fi
 
 echo "launch upload script..."
 python3 $SCRIPT_LOCATION/rest-upload.py $destination
+
+echo "...delete files"
+rm $destination $LAST_RECORD
+
+echo "that was a long journey..."
+echo "...I am done!"
