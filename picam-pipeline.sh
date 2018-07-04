@@ -43,7 +43,7 @@ echo "launch upload script..."
 python3 $SCRIPT_LOCATION/rest-upload.py $destination
 
 echo "...delete files"
-rm $destination $PICAM_DIR/$LAST_RECORD
+rm $destination $PICAM_DIR/archive/$LAST_RECORD
 
 echo "that was a long journey..."
 echo "...I am done!"
