@@ -41,7 +41,8 @@ if [[ $exit_status -eq 124 ]]; then
     echo "[error] Didn't detect 'capturing started' on logs..."
     echo "[error] Failed to start picam..."
     echo "stop child processes..."
-    trap "trap - SIGTERM && kill -- -$$" SIGINT SIGTERM EXIT
+    #trap "trap - SIGTERM && kill -- -$$" SIGINT SIGTERM EXIT
+    pkill -P $$
     echo "...done!"
     exit 1
 fi
@@ -56,5 +57,6 @@ ls archive
 
 # Ensure we end child process
 echo "stop child processes..."
-trap "trap - SIGTERM && kill -- -$$" SIGINT SIGTERM EXIT
+#trap "trap - SIGTERM && kill -- -$$" SIGINT SIGTERM EXIT
+pkill -P $$
 echo "...done!"
