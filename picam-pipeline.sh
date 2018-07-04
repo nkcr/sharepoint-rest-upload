@@ -11,8 +11,9 @@ if [ $# -eq 0 ]
 fi
 
 PICAM_DIR=/home/pi/picam
+SCRIPT_LOCATION="/home/pi/sharepoint-rest-upload"
 
-$PICAM_DIR/picam-record.sh $1
+$SCRIPT_LOCATION/picam-record.sh $1
 
 LAST_RECORD=`ls -t $PICAM_DIR/archive | head -1`
 
