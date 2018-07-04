@@ -10,6 +10,12 @@
 # Exit as soon as a command fail
 set -e
 
+# Check param
+if [ $# -eq 0 ]
+  then
+    echo "[error] Need time argument. Usage: ./picam-job <time>"
+fi
+
 PICAM_DIR=/home/pi/picam
 cd $PICAM_DIR
 
