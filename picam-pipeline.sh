@@ -30,7 +30,7 @@ fi
 echo "convert the record..."
 today=`date +%Y-%m-%d-%H:%M:%S`
 destination="$PICAM_DIR/archive/Louange-du-$today.mp4"
-ffmpeg -i -y $PICAM_DIR/archive/$LAST_RECORD -c:v copy -c:a copy -bsf:a aac_adtstoasc $destination
+ffmpeg -y -i $PICAM_DIR/archive/$LAST_RECORD -c:v copy -c:a copy -bsf:a aac_adtstoasc $destination
 echo "...done!"
 
 echo "check presence of converted file..."
