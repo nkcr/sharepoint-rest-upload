@@ -32,3 +32,12 @@ today=`date +%Y-%m-%d-%Hh`
 destination="$PICAM_DIR/archive/Louange-du-$today.mp4"
 ffmpeg -i $PICAM_DIR/archive/$LAST_RECORD -c:v copy -c:a copy -bsf:a aac_adtstoasc $destination
 echo "...done!"
+
+echo "check presence of converted file..."
+if [ ! -f $destination ]; then
+    echo "[error] no converted file found at $destination"
+    exit 1
+fi
+
+echo "launch upload script..."
+python3 $SCRIPT_LOCATION/rest-upload.py $destination

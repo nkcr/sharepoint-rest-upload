@@ -10,6 +10,12 @@ $ pip3 install -r requirements.txt # Install dependencies
 $ python3 rest-upload.py <file path> # Run the script
 ```
 
+without virtualenv
+
+```bash
+$ sudo apt-get install python3-pip
+```
+
 ### Generate the certificate
 
 From https://github.com/AzureAD/azure-activedirectory-library-for-python/wiki/Client-credentials
