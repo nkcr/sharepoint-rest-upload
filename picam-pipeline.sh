@@ -40,7 +40,18 @@ if [ ! -f $destination ]; then
 fi
 
 echo "launch upload script..."
-python3 $SCRIPT_LOCATION/rest-upload.py $destination
+n=0
+until [ $n -ge 5 ]
+do
+  python3 $SCRIPT_LOCATION/rest-upload.py $destination && break
+  echo "[error] failed to upload, retry $n..."
+  n=$[$n+1]
+  sleep 15
+done
+if [[ $n -eq 5 ]]; then
+  echo "[error] tried $n times to upload without success"
+  exit 1
+fi
 
 echo "...delete files"
 rm $destination $PICAM_DIR/archive/$LAST_RECORD
