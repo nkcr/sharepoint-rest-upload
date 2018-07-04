@@ -22,13 +22,16 @@ PICAM_PID=$!
 # Wait a bit for picam to be ready
 #sleep 5
 echo "wait for picam to be ready..."
-( tail -f -n0 $PICAM_DIR/logs.txt & ) | timeout 5 grep -q "capeturing started"
+( tail -f -n0 $PICAM_DIR/logs.txt & ) | timeout 5  grep -q "capturing started" || # Prevent timeout from exiting
 exit_status=$?
 
 # If we reached the timeout, $? contains 124, otherwise 0
 if [[ $exit_status -eq 124 ]]; then
-    echo "Didn't detect 'capturing started' on logs."
-    echo "Failed to start picam"
+    echo "[error] Didn't detect 'capturing started' on logs..."
+    echo "[error] Failed to start picam..."
+    echo "stop child processes..."
+    trap "trap - SIGTERM && kill -- -$$" SIGINT SIGTERM EXIT
+    echo "...done!"
     exit 1
 fi
 
@@ -41,7 +44,6 @@ touch hooks/stop_record
 ls archive
 
 # Ensure we end child process
-#trap "trap - SIGTERM && kill -- -$$" SIGINT SIGTERM EXIT
-echo "kill picam process..."
-kill -- -$PICAM_PID
+echo "stop child processes..."
+trap "trap - SIGTERM && kill -- -$$" SIGINT SIGTERM EXIT
 echo "...done!"
