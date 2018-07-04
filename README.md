@@ -1,6 +1,8 @@
 Uploads a file to sharepoint using the REST API and `adal` module for the
 authentication using a certificate.
 
+Be careful the name of the file you want to upload. Sharepoint may not accept special chars.
+
 ### Set up
 
 ```bash
