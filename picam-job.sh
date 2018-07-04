@@ -14,6 +14,7 @@ set -e
 if [ $# -eq 0 ]
   then
     echo "[error] Need time argument. Usage: ./picam-job <time>"
+    exit 1
 fi
 
 PICAM_DIR=/home/pi/picam
