@@ -26,7 +26,7 @@ tenant_id      = "58983bb8-f643-45dc-9926-36fe9b8e3b5b"  # (eebule)
 authentication_uri = 'https://login.microsoftonline.com' # aka Authority
 resource       = 'https://bullenetwork.sharepoint.com'
 authority_url  = (authentication_uri + '/' + tenant_id)
-certificate_path = os.path.abspath("certificate/server.pem")
+certificate_path = os.path.join(os.path.abspath(os.path.dirname(sys.argv[0])), "certificate/server.pem")
 
 #
 # Check arguments
