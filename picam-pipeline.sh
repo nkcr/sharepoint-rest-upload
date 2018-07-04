@@ -39,14 +39,16 @@ if [ ! -f $destination ]; then
     exit 1
 fi
 
-echo "launch upload script..."
 n=0
+wait=1
 until [ $n -ge 5 ]
 do
+  echo "launch upload script..."
   python3 $SCRIPT_LOCATION/rest-upload.py $destination && break
-  echo "[error] failed to upload, retry $n..."
+  echo "[error] failed to upload, wait $wait(s) and retry $n..."
+  sleep $wait
   n=$[$n+1]
-  sleep 15
+  wait=$[$wait*10] # 1, 10, 100, 1000, 10000
 done
 if [[ $n -eq 5 ]]; then
   echo "[error] tried $n times to upload without success"
