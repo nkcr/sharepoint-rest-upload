@@ -3,6 +3,13 @@
 # Exit as soon as a command fail
 set -e
 
+# Check param
+if [ $# -eq 0 ]
+  then
+    echo "[error] Need time argument. Usage: ./picam-pipeline <time>"
+    exit 1
+fi
+
 PICAM_DIR=/home/pi/picam
 
 $PICAM_DIR/picam-record.sh $1
