@@ -4,6 +4,7 @@
 # This script starts picam and record for a given time
 # Take in param the number of seconds
 # Usage: ./picam-jobs 10
+#
 # Wait on log: https://superuser.com/questions/270529/monitoring-a-file-until-a-string-is-found
 #
 
