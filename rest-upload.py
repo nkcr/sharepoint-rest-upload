@@ -40,6 +40,8 @@ file_path = os.path.abspath(sys.argv[1])
 if os.path.exists(file_path):
   file_name = os.path.basename(file_path)
   file_size = os.path.getsize(file_path)
+else:
+  raise Exception("ERROR:", f"File not found ({file_path})")
 
 #
 # Method to read a file in chuncks
@@ -73,7 +75,7 @@ access_token = str(token.get("accessToken"))
 # The second part is for chunks
 #
 base_request = resource + "/sites/" + sharepoint_name + \
-    "/_api/Web/GetFolderByServerRelativeUrl('{}')".format(doc_path)
+    f"/_api/Web/GetFolderByServerRelativeUrl('{doc_path}')"
 request_get  = base_request + "/Files"
 request_post = base_request + \
     "/Files/add(url='{}', overwrite=true)".format(file_name)
