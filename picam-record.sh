@@ -33,7 +33,7 @@ PICAM_PID=$!
 # Wait a bit for picam to be ready
 #sleep 5
 echo "wait for picam to be ready..."
-( tail -f -n0 $PICAM_DIR/logs.txt & ) | timeout 5  grep -q "capturing started" || # Prevent timeout from exiting
+( tail -f $PICAM_DIR/logs.txt & ) | timeout 5  grep -q "capturing started" || # Prevent timeout from exiting
 exit_status=$?
 
 # If we reached the timeout, $? contains 124, otherwise 0
